@@ -146,4 +146,64 @@ var 声明的变量为函数级作用域。
 let 和 const 声明的变量为块级作用域。
 
 ## ES7的特性
-### 1.
+### 1 includes()
+includes()函数用来判断一个数组是否包含一个指定的值。
+
+```
+   arr.includes(x)
+   arr.indexOf(x)>=0
+```
+
+这两个表达式是等价的。
+
+### 2 指数操作符 **
+
+```
+	2**10 == Math.pow(2,10) // 二者相等，返回true
+```
+
+## ES8的特性
+### 1 async/await
+
+### 2 Object.values()
+Object.values()函数返回一个对象自身所有的属性值，不包括继承的值。
+
+```
+	const obj={a:1, b:2, c:3};
+	// ES7写法
+	console.log(Object.values(obj)); // 输出[1,2,3]
+	
+	// ES8写法
+	console.log(Object.keys(obj).map(key=>obj[key])); // 输出[1,2,3]
+``` 
+
+### 3 Object.entries()
+Object.entries()函数返回一个对象自身可枚举属性的键值对的数组。
+
+```
+	// ES7写法
+	Object.keys(obj).forEach(key=>{
+		console.log('key:'+key+';value:'+obj[key]+'.')
+	})
+	
+	// ES8写法
+	for (let [key, value] of Object.entries(obj)) {
+		console.log('key:'+key+';value:'+obj[key]+'.')
+	}
+```
+
+### 4 paddingStart() 和 paddingEnd()
+字符串的实例函数，允许在字符串开头或结尾填充指定字符串（可选）以达到某个长度。
+
+### 5 函数参数列表结尾允许添加逗号
+```
+	// ES7写法
+	var f = function(a,
+		b
+		) {...}
+		
+	// ES8写法
+	var f = function(a,
+		b,
+		) {...}
+```
