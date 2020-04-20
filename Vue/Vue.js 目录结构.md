@@ -24,6 +24,8 @@ vue-project
 |   ├── directives                       自定义指令目录         
 |   ├── router                           前端路由目录         
 |   ├── store                            状态管理（如 vuex）目录         
+|   ├── styles                           Sass 目录         
+|   ├── libs                             第三方库目录         
 │   ├── utils                            自定义工具集
 │   ├── views                            页面文件所在目录
 │   |   ├── login
