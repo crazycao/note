@@ -182,3 +182,130 @@ export default function Layout(props) {
 ```
 
 通过 `cloneElement` 传递参数。
+
+## 约定式路由
+
+如果没有 routes 配置，Umi 会进入约定式路由模式，然后分析 `src/pages` 目录拿到路由配置。
+
+比如以下文件结构：
+
+```
+.
+  └── pages
+    ├── index.tsx
+    └── users.tsx
+```
+
+会得到以下路由配置，
+
+```
+[
+  { exact: true, path: '/', component: '@/pages/index' },
+  { exact: true, path: '/users', component: '@/pages/users' },
+]
+```
+
+> 注意：满足以下任意规则的文件不会被注册为路由
+> 
+> - 以 . 或 _ 开头的文件或目录
+> - 以 d.ts 结尾的类型定义文件
+> - 以 test.ts、spec.ts、e2e.ts 结尾的测试文件（适用于 .js、.jsx 和 .tsx 文件）
+> - components 和 component 目录
+> - utils 和 util 目录
+> - 不是 .js、.jsx、.ts 或 .tsx 文件
+> - 文件内容不包含 JSX 元素
+
+## 动态路由
+
+约定 [] 包裹的文件或文件夹为动态路由。
+
+比如以下文件结构，
+
+```
+.
+  └── pages
+    └── [post]
+      ├── index.tsx
+      └── comments.tsx
+    └── users
+      └── [id].tsx
+    └── index.tsx
+```
+
+会生成路由配置，
+
+```
+[
+  { exact: true, path: '/:post/', component: '@/pages/[post]/index' },
+  { exact: true, path: '/:post/comments', component: '@/pages/[post]/comments', },
+  { exact: true, path: '/users/:id', component: '@/pages/users/[id]' },
+  { exact: true, path: '/', component: '@/pages/index' },
+];
+```
+
+## 嵌套路由
+
+Umi 里约定目录下有 `_layout.tsx` 时会生成嵌套路由，以 `_layout.tsx` 为该目录的 layout。layout 文件需要返回一个 React 组件，并通过 `props.children` 渲染子组件。
+
+比如以下目录结构，
+
+```
+.
+└── pages
+    └── users
+        ├── _layout.tsx
+        ├── index.tsx
+        └── list.tsx
+```
+
+会生成路由，
+
+```
+[
+  { exact: false, path: '/users', component: '@/pages/users/_layout',
+    routes: [
+      { exact: true, path: '/users', component: '@/pages/users/index' },
+      { exact: true, path: '/users/list', component: '@/pages/users/list' },
+    ]
+  }
+]
+```
+
+## 全局 layout
+
+约定 `src/layouts/index.tsx` 为全局路由。返回一个 React 组件，并通过 `props.children` 渲染子组件。
+
+比如以下目录结构，
+
+```
+.
+└── src
+    ├── layouts
+    │   └── index.tsx
+    └── pages
+        ├── index.tsx
+        └── users.tsx
+```
+
+会生成路由，
+
+```
+[
+  { exact: false, path: '/', component: '@/layouts/index',
+    routes: [
+      { exact: true, path: '/', component: '@/pages/index' },
+      { exact: true, path: '/users', component: '@/pages/users' },
+    ],
+  },
+]
+```
+
+一个自定义的全局 layout 如下：
+
+```
+import { IRouteComponentProps } from 'umi'
+
+export default function Layout({ children, location, route, history, match }: IRouteComponentProps) {
+  return children
+}
+```
