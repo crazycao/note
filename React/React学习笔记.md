@@ -79,106 +79,45 @@ VSCode 使用 **vscode-language-babel** 插件来支持 React 的语法高亮。
 
 ## 核心概念
 
-### React
-React 是一个用于构建用户界面的 JavaScript 库。
+[React核心概念](./React/React核心概念.md)
 
-### JSX
-JSX 是一个 JavaScript 的语法扩展。
+## 将函数组件转换成 class 组件
 
-```
-const element = <h1>Hello, world!</h1>;
-```
-这个有趣的标签语法既不是字符串也不是 HTML，却可以很好地描述 UI 应该呈现出它应有交互的本质形式。
+五个步骤：
 
-```
-// 在 JSX 语法中，你可以在大括号内放置任何有效的 JavaScript 表达式。
-const element = <h1>Hello, {user.firstName}</h1>;
-```
-```
-// 为了便于阅读，我们会将 JSX 拆分为多行。同时，我们建议将内容包裹在括号中。
-const element = (
-  <h1>
-    Hello, {formatName(user)}!
-  </h1>
-);
-```
+1. 创建一个同名的 ES6 class，并且继承于 `React.Component`。
+2. 添加一个空的 `render()` 方法。
+3. 将函数体移动到 `render()` 方法之中。
+4. 在 `render()` 方法中使用 `this.props` 替换 `props`。
+5. 删除剩余的空函数声明。
 
+函数组件：
 
 ```
-// 可以使用 /> 来闭合标签，就像 XML 语法一样
-const element = <img src={user.avatarUrl} />;
-```
-Babel 会把 JSX 转译成一个名为 React.createElement() 函数调用，最后生成对象。这些对象被称为 “React 元素”。
-
-```
-// 上一条例子等于创建了一个这样的对象。（注意：这是简化过的结构）
-const element = {
-  type: 'img',
-  props: {
-    className: 'src',
-    children: user.avatarUrl
-  }
-};
-```
-
-### 元素
-元素是构成 React 应用的最小砖块。
-想要将一个 React 元素渲染到根 DOM 节点中，只需把它们一起传入 ReactDOM.render()：
-
-```
-const element = <h1>Hello, world</h1>;
-ReactDOM.render(element, document.getElementById('root'));
-```
-
-React 元素是不可变对象。一旦被创建，你就无法更改它的子元素或者属性。
-更新 UI 唯一的方式是创建一个全新的元素，并将其传入 ReactDOM.render()。
-
-```
-const element = <h1>Hello, world</h1>;
-ReactDOM.render(element, document.getElementById('root'));
-const anotherElement = <h1>Goodby, world</h1>;
-ReactDOM.render(anotherElement, document.getElementById('root'));
-```
-React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新（只更新它需要更新的部分）来使 DOM 达到预期的状态。
-
-### 组件 和 props
-
-组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。也被称为“函数组件”。
-
-定义组件最简单的方式就是编写 JavaScript 函数：
-
-```
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+function Clock(props) {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {props.date.toLocaleTimeString()}.</h2>
+    </div>
+  );
 }
 ```
 
-也可以使用 ES6 的 class 来定义组件，这种称为“class 组件”：
+转换后的 class 组件：
 
 ```
-class Welcome extends React.Component {
+class Clock extends React.Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
   }
 }
 ```
-React 元素可以是 DOM 标签，也可以是用户自定义的组件。因此，可以把组件返回的元素渲染显示，也可以直接渲染组件。
-
-```
-const element = <Welcome name="Sara" />;
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
-```
-
-```
-ReactDOM.render(
-  <Welcome name="Sara" />,
-  document.getElementById('root')
-);
-```
-如果你想写的组件只包含一个 render 方法，并且不包含 state，那么使用函数组件就会更简单。
 
 ## 参数传递
 

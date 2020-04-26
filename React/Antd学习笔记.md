@@ -92,3 +92,5 @@ npm install eslint-plugin-react --save-dev
 ## 路由
 
 目前脚手架中所有的路由都通过 `config.ts` 来统一管理。
+
+配置规则参见 [Umi路由](https://umijs.org/zh-CN/docs/routing)。
