@@ -89,8 +89,42 @@ npm install eslint --save-dev
 npm install eslint-plugin-react --save-dev
 ```
 
+## 布局
+
+页面整体布局是一个产品最外层的框架结构，往往会包含导航、页脚、侧边栏、通知栏以及内容等。
+
+在 Ant Design Pro 中，我们抽离了使用过程中的通用布局，都放在 layouts 目录中，分别为：
+
+- BasicLayout：基础页面布局，包含了头部导航，侧边栏和通知栏。
+- UserLayout：抽离出用于登录注册页面的通用布局。
+- BlankLayout：空白的布局。
+
 ## 路由
 
 目前脚手架中所有的路由都通过 `config.ts` 来统一管理。
 
-配置规则参见 [Umi路由](https://umijs.org/zh-CN/docs/routing)。
+配置规则参见 [Umi路由](./Umi/Umi路由.md) （https://umijs.org/zh-CN/docs/routing）。支持以下主要参数：
+
+- `path` 路由路径。用于与 `url` 匹配。可以包含通配符。
+- `component` 路由组件。配置用于渲染的 React 组件路径。可以是绝对路径，也可以是相对路径。
+- `exact` 是否严格匹配。默认 `false`，`url` 中包含 `path` 即可匹配上；否则需要完全相同才能匹配成功。
+- `redirect` 配置路由跳转。访问 `path` 时则会跳转到 `redirect` 指定的另一个路由。
+- `routes` 子路由。是一个数组，数组内每个元素都是一个路由，可以循环下去。
+
+Antd 在 umi 的配置中我们增加了一些参数，来辅助生成菜单。
+
+- `name` 和 `icon` 分别代表生成菜单项的文本和图标。
+- `hideChildrenInMenu` 用于隐藏不需要在菜单中展示的子路由。
+- `hideInMenu` 可以在菜单中不展示这个路由，包括子路由。
+- `authority` 用来配置这个路由的权限，如果配置了将会验证当前用户的权限，并决定是否展示。
+
+## 菜单
+根据路由配置来生成菜单。菜单项名称，嵌套路径与路由高度耦合。
+
+可以配置 `hideInMenu: true` 让某些路由在菜单中不显示。
+
+可以在 `src/layouts/BasicLayout.tsx` 中修改 `menuDataRender`，并在代码中发起 `http` 请求，只需服务器返回路由配置格式的 json 即可。
+
+## 面包屑
+
+面包屑由 `PageHeaderWrapper` 实现。

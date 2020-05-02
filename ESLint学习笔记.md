@@ -16,6 +16,51 @@ npm install eslint --save-dev
 ```
 ./node_modules/.bin/eslint --init
 ```
+脚本会让你做出选择
+
+```
+How would you like to use ESLint? (Use arrow keys)
+  To check syntax only 
+❯ To check syntax and find problems 
+  To check syntax, find problems, and enforce code style
+```
+```
+How would you like to use ESLint? (Use arrow keys)
+What type of modules does your project use? (Use arrow keys)
+❯ JavaScript modules (import/export) 
+  CommonJS (require/exports) 
+  None of these 
+```
+```
+Which framework does your project use? (Use arrow keys)
+❯ React 
+  Vue.js 
+  None of these 
+```
+```
+Where does your code run? (Press <space> to select, <a> to toggle all, <i> to invert selection)
+❯◉ Browser
+ ◯ Node
+```
+```
+How would you like to define a style for your project? (Use arrow keys)
+❯ Use a popular style guide 
+  Answer questions about your style 
+  Inspect your JavaScript file(s) 
+```
+```
+Which style guide do you want to follow? (Use arrow keys)
+❯ Airbnb (https://github.com/airbnb/javascript) 
+  Standard (https://github.com/standard/standard) 
+  Google (https://github.com/google/eslint-config-google) 
+```
+```
+ What format do you want your config file to be in? (Use arrow keys)
+❯ JavaScript 
+  YAML 
+  JSON
+```
+
 于是就会在当前文件夹生成一个 `.eslintrc` 文件。
 
 ## `.eslintrc` 文件
