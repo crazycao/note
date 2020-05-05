@@ -128,3 +128,5 @@ Antd 在 umi 的配置中我们增加了一些参数，来辅助生成菜单。
 ## 面包屑
 
 面包屑由 `PageHeaderWrapper` 实现。
+
+`PageHeaderWrapper` 必须要被 `ProLayout` 包裹才能自动生成面包屑和标题。
