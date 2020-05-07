@@ -130,3 +130,104 @@ Antd 在 umi 的配置中我们增加了一些参数，来辅助生成菜单。
 面包屑由 `PageHeaderWrapper` 实现。
 
 `PageHeaderWrapper` 必须要被 `ProLayout` 包裹才能自动生成面包屑和标题。
+
+## Mock
+
+约定 `/mock` 文件夹下所有文件为 `mock` 文件。
+
+通常把每一个数据模型抽象成一个文件，统一放在 `mock` 的文件夹中，然后他们会自动被引入。
+
+文件导出接口定义，支持基于 `require` 动态分析的实时刷新，支持 ES6 语法，以及友好的出错提示。
+
+```
+export default {
+  // 支持值为 Object 和 Array
+  'GET /api/users': { users: [1, 2] },
+
+  // GET POST 可省略
+  '/api/users/1': { id: 1 },
+
+  // 支持自定义函数，API 参考 express@4
+  'POST /api/users/create': (req, res) => {
+    res.end('OK');
+  },
+};
+```
+
+当客户端（浏览器）发送请求，如：`GET /api/users`，那么本地启动的 umi dev 会跟此配置文件匹配请求路径以及方法，如果匹配到了，就会将请求通过配置处理。
+
+### 引入 Mock.ts
+
+```
+import mockjs from 'mockjs';
+
+export default {
+  // 使用 mockjs 等三方库
+  'GET /api/tags': mockjs.mock({
+    'list|100': [{ name: '@city', 'value|1-100': 50, 'type|0-2': 1 }],
+  }),
+};
+```
+
+### 添加跨域请求头
+
+```
+'POST /api/users/create': (req, res) => {
+  ...
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  ...
+},
+```
+
+### 手动添加 setTimeout 模拟延迟
+
+```
+'POST /api/forms': (req, res) => {
+  setTimeout(() => {
+    res.send('Ok');
+  }, 1000);
+},
+```
+
+### 使用插件模拟延迟（批量接口）
+
+```
+import { delay } from 'roadhog-api-doc';
+
+const proxy = {
+  'GET /api/project/notice': getNotice,
+  'GET /api/tags': mockjs.mock({
+    'list|100': [{ name: '@city', 'value|1-100': 50, 'type|0-2': 1 }],
+  }),
+  'GET /api/fake_list': getFakeList,
+  'POST /api/register': (req, res) => {
+    res.send({ status: 'ok' });
+  },
+  'GET /api/notices': getNotices,
+};
+
+// 调用 delay 函数，统一处理
+export default delay(proxy, 1000);
+```
+
+### 关闭 mock
+
+- 方法一：通过环境变量临时关闭
+
+	```
+	npm run start:no-mock
+	```
+	
+	实际是
+	
+	```
+	MOCK=none umi dev
+	```
+	
+- 方法二：通过配置关闭
+
+	```
+	export default {
+  		mock: false,
+	};
+	```
