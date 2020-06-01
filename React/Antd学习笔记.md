@@ -231,3 +231,21 @@ export default delay(proxy, 1000);
   		mock: false,
 	};
 	```
+
+## 调试、构建 和 部署
+
+- 调试
+
+	```
+	npm run dev
+	```
+
+- 构建
+
+	```
+	npm run build
+	```
+	
+- 部署
+
+	将整个 `dist` 文件夹复制到你的 CDN 或静态服务器即可。`index.html` 应该是你的服务器入口。
