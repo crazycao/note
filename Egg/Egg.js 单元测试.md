@@ -1,6 +1,6 @@
 # Egg.js 单元测试
 
-官方推荐测试框架：[Mocha](https://mochajs.org)
+官方推荐测试框架：[Mocha](https://mochajs.org)（[Mocha中文网](https://mochajs.cn/)）
 
 官方推荐断言库：[power-assert](https://github.com/power-assert-js/power-assert)
 
@@ -14,9 +14,19 @@ Egg.js 中已经内置 `Mocha`、`co-mocha`、`power-assert`，`nyc` 等模块�
 }
 ```
 
-然后就可以按标准的 `npm test` 来运行测试了。
+运行测试：
+
+```
+npm test
+```
 
 > **注意：** `npm test` 会首先进行 eslint 检查，若有 `error` 则不会开始测试。
+
+指定文件路径，可以对某一个单元测试文件进行测试：
+
+```
+npm test ./path/to/user.test.js
+```
 
 ## 目录结构
 
@@ -78,15 +88,16 @@ describe('test/app/controller/user.test.js', () => {
 
 ## 前置和后置步骤
 
-Mocha 使用 before/after/beforeEach/afterEach 来处理前置后置任务，基本能处理所有问题。 每个用例会按 before -> beforeEach -> it -> afterEach -> after 的顺序执行，而且可以定义多个。
+Mocha 使用 `before/after/beforeEach/afterEach` 来处理前置后置任务，基本能处理所有问题。 每个用例会按 `before` -> `beforeEach` -> `it` -> `afterEach` -> `after` 的顺序执行，而且可以定义多个。
 
 ```
 describe('egg test', () => {
-  before(() => console.log('order 1'));
-  before(() => console.log('order 2'));
-  after(() => console.log('order 6'));
-  beforeEach(() => console.log('order 3'));
-  afterEach(() => console.log('order 5'));
+  // Mocha 刚开始运行的时候会载入所有用例，这时调用 describe 方法，执行 before()
+  before(() => console.log('order 1')); // 在当前 describe 中的所有用例之前执行
+  before(() => console.log('order 2')); // 支持多个 before 函数
+  after(() => console.log('order 6')); // 在当前 describe 中的所有用例之后执行
+  beforeEach(() => console.log('order 3')); // 在当前 describe 中的每个用例之前执行
+  afterEach(() => console.log('order 5')); // 在当前 describe 中的每个用例之后执行
   it('should worker', () => console.log('order 4'));
 });
 ```
