@@ -1,8 +1,43 @@
 # React核心概念
 
 
+- [React](#React)
+- [JSX](#JSX)
+- [元素](#元素)
+- [组件](#组件)
+  - [函数组件](#函数组件)
+  - [class组件](#class组件)
+  - [渲染组件](#渲染组件)
+  - [将函数组件转换成 class 组件](#transfer)
+- [Props](#props)
+- [State](#State)
+  - [正确地使用State](#usage)
+  - [props vs state](#vs)
+- [生命周期](#生命周期)
+  - [挂载](#挂载)
+  - [更新](#更新)
+  - [卸载](#卸载)
+- [事件处理](#事件处理)
+  - [向事件处理程序传递参数](#向事件处理程序传递参数)
+- [条件渲染](#条件渲染)
+  - [if ... else ...](#if...else)
+  - [与运算符 &&](#与运算符)
+  - [三目运算符 ? :](#三目运算符)
+  - [阻止组件渲染](#阻止组件渲染)
+- [列表](#列表)
+  - [key](#key)
+- [表单](#表单)
+  - [受控组件](#受控组件)
+  - [处理多个输入](#处理多个输入)
+- [状态提升](#Lifting_State_Up)
+- [组合 vs 继承](#Composition_vs_Inheritance)
+
+<span id='React'>
+
 ## React
 React 是一个用于构建用户界面的 JavaScript 库。
+
+<span id='JSX'>
 
 ## JSX
 JSX 是一个 JavaScript 的语法扩展。
@@ -46,6 +81,8 @@ const element = {
 };
 ```
 
+<span id='元素'>
+
 ## 元素
 元素是构成 React 应用的最小砖块。
 想要将一个 React 元素渲染到根 DOM 节点中，只需把它们一起传入 ReactDOM.render()：
@@ -66,9 +103,15 @@ ReactDOM.render(anotherElement, document.getElementById('root'));
 ```
 React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新（只更新它需要更新的部分）来使 DOM 达到预期的状态。
 
-## 组件 和 props
+<span id='组件'>
 
-组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “**props**”），并返回用于描述页面展示内容的 React 元素。也被称为“**函数组件**”。
+## 组件
+
+组件允许你将 UI 拆分为独立可复用的代码片段，并对每个片段进行独立构思。
+
+<span id='函数组件'>
+
+### 函数组件
 
 定义组件最简单的方式就是编写 JavaScript 函数：
 
@@ -77,6 +120,14 @@ function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 ```
+
+> `一个有效的React组件 = 接收唯一带有数据的“props”(代表属性)对象 + 返回一个React元素`
+
+这类组件被称为“**函数组件**”，因为它本质上就是 JavaScript 函数。
+
+<span id='class组件'>
+
+### class组件
 
 也可以使用 ES6 的 class 来定义组件，这种称为“**class 组件**”：
 
@@ -87,6 +138,13 @@ class Welcome extends React.Component {
   }
 }
 ```
+
+上述两个组件在 React 里是等效的。
+
+<span id='渲染组件'>
+
+### 渲染组件
+
 React 元素可以是 DOM 标签，也可以是用户自定义的组件。因此，可以把组件返回的元素渲染显示，也可以直接渲染组件。
 
 ```
@@ -103,7 +161,81 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+
 如果你想写的组件只包含一个 render 方法，并且不包含 state，那么使用函数组件就会更简单。
+
+- **注意： 组件名称必须以大写字母开头。**
+ React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<div />`代表 HTML 的 div 标签，而 `<Welcome />` 则代表一个组件，并且需在作用域内使用 Welcome。
+
+<span id='transfer'>
+
+### 将函数组件转换成 class 组件
+
+五个步骤：
+
+1. 创建一个同名的 ES6 class，并且继承于 `React.Component`。
+1. 添加一个空的 `render()` 方法。
+1. 将函数体移动到 `render()` 方法之中。
+1. 在 `render()` 方法中使用 `this.props` 替换 `props`。
+1. 删除剩余的空函数声明。
+
+```
+// 函数组件
+function Clock(props) {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {props.date.toLocaleTimeString()}.</h2>
+    </div>
+  );
+}
+```
+
+```
+// 类组件
+class Clock extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+```
+
+<span id='props'>
+
+## props
+
+当 React 元素为用户自定义组件时，它会将 JSX 所接收的属性（attributes）以及子组件（children）转换为单个对象传递给组件，这个对象被称之为 “**props**”。
+
+```
+function Welcome(props) {
+  return <h1>Hello, {props.name}. Welcome to {props.school}!</h1>;
+}
+
+const element = <Welcome name="Sara" school="Harvard University"/>;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+组件无论是使用函数声明还是通过 class 声明，都决不能修改自身的 props。
+
+React 严格规定：
+**所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。**
+
+> 纯函数：函数不会尝试更改入参，且多次调用下相同的入参始终返回相同的结果。如
+>```
+>function sum(a, b) {
+>    return a + b;
+>}
+>```
+
+<span id='State'>
 
 ## State
 
@@ -123,20 +255,21 @@ class Welcome extends React.Component {
 
 > 注意：
 > 
-> 构造函数中应该始终包含 `super(props);` 以调用父类的构造函数。
+> class 组件的构造函数中应该始终包含 `super(props);` 以调用父类的构造函数。
 > 
 > 但是，如果不初始化 state 或不进行方法绑定，则不需要为 React 组件实现构造函数。
 
+<span id='usage'>
 
-## 正确地使用 State
+### 正确地使用 State
 
-- 不要直接修改 State，而是应该使用 `setState()`
+- **不要直接修改 State**，而是应该使用 `setState()`
   
   ```
   this.setState({comment: 'GoodNight'});
   ```
 
-- 构造函数是唯一可以给 `this.state` 赋值的地方
+构造函数是唯一可以给 `this.state` 赋值的地方
 
   ```
   constructor(props) {
@@ -145,16 +278,16 @@ class Welcome extends React.Component {
   }
   ```
   
-- State 的更新可能是异步的，所以你不要依赖 `this.props` 和 `this.state` 的值来更新下一个状态。
+- **State 的更新可能是异步的**，所以你不要依赖 `this.props` 和 `this.state` 的值来更新下一个状态。
 
-  解决办法是，让 setState() 接收一个函数。
+  解决办法是，当需要用到state里的一个属性给另一个属性赋值时，让 `setState()` 接收一个函数。
   
   ```
   this.setState((state, props) => ({
       counter: state.counter + props.increment
   }));
   ```
-- State 的更新会被合并。当调用 `setState()` 的时候，React 会把你提供的对象合并到当前的 `state`。
+- **State 的更新会被合并**。当调用 `setState()` 的时候，React 会把你提供的对象合并到当前的 `state`。
 
   ```
   constructor(props) {
@@ -170,20 +303,37 @@ class Welcome extends React.Component {
       });
   } // 执行以后的 state 为 { a: 1, b: 2}
   ```
+- **数据是向下流动的**
 
-## props vs state
+不管是父组件或是子组件都无法知道某个组件是有状态的还是无状态的，并且它们也并不关心它是函数组件还是 class 组件。
+
+组件可以选择把它的 state 作为 props 向下传递到它的子组件中。
+
+子组件会在其 props 中接收参数，但是组件本身无法知道它是来自于父组件的 state 或是 props，还是手动输入的。
+
+这通常会被叫做 **“自上而下”或是“单向”的数据流**。
+
+任何的 state 总是所属于特定的组件，而且从该 state 派生的任何数据或 UI 只能影响树中“低于”它们的组件。
+
+<span id='vs'>
+
+### props vs state
 
 `props`（“properties” 的缩写）和 `state` 都是普通的 JavaScript 对象。它们都是用来保存信息的，这些信息可以控制组件的渲染输出，而它们的一个重要的不同点就是：
 
 `props` 是传递给组件的（类似于*函数的形参*），而 `state` 是在组件内被组件自己管理的（类似于在一个*函数内声明的变量*）。
 
+<span id='生命周期'>
+
 ## 生命周期
 
-当 class 组件第一次被渲染到 DOM 中的时候，就为其设置一个计时器。这在 React 中被称为“**挂载（mount）**”。
+当 class 组件第一次被渲染到 DOM 中的时候，在 React 中被称为“**挂载（mount）**”。
 
-同时，当 DOM 中 class 组件被删除的时候，应该清除计时器。这在 React 中被称为“**卸载（unmount）**”。
+同时，当 DOM 中 class 组件被删除的时候，在 React 中被称为“**卸载（unmount）**”。
 
 当组件挂载或卸载时就会去执行的这些方法，就叫做“**生命周期方法**”。
+
+<span id='挂载'>
 
 ### 挂载
 
@@ -209,6 +359,8 @@ class Welcome extends React.Component {
   
   可以在这里直接调用 `setState()`。它将触发额外渲染，但此渲染会发生在浏览器更新屏幕之前。请谨慎使用该模式，因为它会导致性能问题。
 
+<span id='更新'>
+
 ### 更新
 
 当组件的 props 或 state 发生变化时会触发更新。组件更新的生命周期方法调用顺序如下：
@@ -221,6 +373,8 @@ class Welcome extends React.Component {
   你可以在此方法中对更新前后的 props 和 state 进行比较。也可以选择在此处进行网络请求。
   
   可以在此方法中直接调用 `setState()`，但请注意它必须被包裹在一个条件语句里，否则会导致死循环。它还会导致额外的重新渲染，虽然用户不可见，但会影响组件性能。
+
+<span id='卸载'>
 
 ### 卸载
 
@@ -235,13 +389,15 @@ class Welcome extends React.Component {
   不应在此调用 `setState()`，因为该组件将永远不会重新渲染。组件实例卸载后，将永远不会再挂载它。
 
 
+<span id='事件处理'>
+
 ## 事件处理
 
 React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上的不同：
 
-- React 事件的命名采用小驼峰式（camelCase），而不是纯小写。
-- 使用 JSX 语法时你需要传入一个函数作为事件处理函数，而不是一个字符串。
-- 不能通过返回 false 的方式阻止默认行为。你必须显式的使用 preventDefault。
+- React 事件的命名采用**小驼峰式（camelCase）**，而不是纯小写。
+- 使用 JSX 语法时你**需要传入一个函数作为事件处理函数**，而不是一个字符串。
+- 不能通过返回 false 的方式**阻止默认行为**。你必须显式的**使用 `preventDefault`**。
 
 ```
 function ActionLink() {
@@ -258,7 +414,7 @@ function ActionLink() {
 }
 ```
 
-- 为了在回调中使用 `this`，需要在构造函数中绑定 `this.handleClick`
+- 为了在回调中使用 `this`，**需要在构造函数中绑定 `this.handleClick`**
 
 ```
 class LoggingButton extends React.Component {
@@ -283,7 +439,7 @@ class LoggingButton extends React.Component {
 }
 ```
 
-- 或者 可以在回调中使用箭头函数，此语法确保 `handleClick` 内的 `this` 已被绑定。但是此语法问题在于每次渲染时都会创建不同的回调函数。
+- 或者 可以在回调中使用**箭头函数**，此语法**确保 `handleClick` 内的 `this` 已被绑定**。但是此语法问题在于每次渲染时都会创建不同的回调函数。
 
 ```
   render() {
@@ -296,8 +452,26 @@ class LoggingButton extends React.Component {
   }
 ```
 
+<span id='向事件处理程序传递参数'>
+
+### 向事件处理程序传递参数
+
+```
+<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+```
+
+上述两种方式是等价的，分别通过**箭头函数**和 **Function.prototype.bind** 来实现。
+
+在这两种情况下，React 的事件对象 e 会被作为第二个参数传递。如果通过箭头函数的方式，事件对象必须显式的进行传递，而通过 bind 的方式，事件对象以及更多的参数将会被隐式的进行传递。
+
+<span id='条件渲染'>
 
 ## 条件渲染
+
+在 React 中，你可以创建不同的组件来封装各种你需要的行为。然后，依据应用的不同状态，你可以只渲染对应状态下的部分内容。
+
+<span id='if...else'>
 
 ### if ... else ...
 
@@ -320,6 +494,8 @@ class LoggingButton extends React.Component {
   }
 ```
 
+<span id='与运算符'>
+
 ### 与运算符 &&
 
 通过花括号包裹代码，你可以在 JSX 中嵌入任何表达式。相当于 `if` 语句了。
@@ -339,6 +515,8 @@ render() {
 }
 ``` 
 
+<span id='三目运算符'>
+
 ### 三目运算符 ?:
 
 ```
@@ -355,12 +533,17 @@ render() {
 }
 ```
 
+<span id='阻止组件渲染'>
+
 ### 阻止组件渲染
+
+在极少数情况下，你可能希望能隐藏组件，即使它已经被其他组件渲染。
 
 在组件的 `render()` 方法中，直接返回 null，可以使该组件不进行任何渲染。（但是组件的生命周期方法仍然会被调用。）
 
-## 列表
+<span id='列表'>
 
+## 列表
 
 使用 `map()` 函数对数组中的每一项使用 `{}` 在 JSX 内构建一个元素集合。
 
@@ -380,6 +563,8 @@ ReactDOM.render(
 );
 ```
 
+<span id='key'>
+
 ### key
 
 `key` 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
@@ -396,16 +581,61 @@ const todoItems = todos.map((todo) =>
 
 如果你选择不指定显式的 `key` 值，那么 React 将默认使用索引用作为列表项目的 `key` 值。
 
+如果列表项目的顺序可能会变化，我们不建议使用索引来用作 key 值，因为这样做会导致性能变差，还可能引起组件状态的问题。
+
 > 注意：元素的 `key` 只有放在就近的数组上下文中才有意义。一般在 `map()` 方法中的元素上设置 `key` 属性。
 
+#### 用 key 提取组件
+
+如果你提取出一个 `ListItem` 组件，你应该把 key 保留在数组中的这个 `<ListItem />` 元素上，而不是放在 `ListItem` 组件中的 `<li>` 元素上。
+
+```
+function ListItem(props) {
+  // 正确！这里不需要指定 key：
+  return <li>{props.value}</li>;
+}
+
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    // 正确！key 应该在数组的上下文中被指定
+    <ListItem key={number.toString()} value={number} />
+  );
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  );
+}
+
+const numbers = [1, 2, 3, 4, 5];
+ReactDOM.render(
+  <NumberList numbers={numbers} />,
+  document.getElementById('root')
+);
+```
+
+经验法则：**在 `map()` 方法中的元素需要设置 key 属性。**
+
+#### key 只是在兄弟节点之间必须唯一
+
+数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的 key 值。
+
+<span id='表单'>
 
 ## 表单
 
-在 React 里，HTML 表单元素的工作方式和其他的 DOM 元素有些不同，这是因为表单元素通常会保持一些内部的 state。
+在 React 里，HTML 表单元素的工作方式和其他的 DOM 元素有些不同：
 
-在 HTML 中，表单元素（如`<input>`、 `<textarea>` 和 `<select>`）之类的表单元素通常自己维护 state，并根据用户输入进行更新。而在 React 中，可变状态（mutable state）通常保存在组件的 state 属性中，并且只能通过使用 `setState()` 来更新。
+- 在 HTML 中，表单元素（如`<input>`、 `<textarea>` 和 `<select>`）之类的表单元素通常自己维护 state，并根据用户输入进行更新。
 
-渲染表单的 React 组件还控制着用户输入过程中表单发生的操作。被 React 以这种方式控制取值的表单输入元素就叫做“受控组件”。
+- 而**在 React 中，可变状态（mutable state）通常保存在组件的 state 属性中，并且只能通过使用 `setState()` 来更新**。
+
+<span id='受控组件'>
+
+### 受控组件
+
+渲染表单的 React 组件还控制着用户输入过程中表单发生的操作。被 React 以这种方式控制取值的表单输入元素就叫做“**受控组件**”。
 
 ```
 class NameForm extends React.Component {
@@ -418,6 +648,7 @@ class NameForm extends React.Component {
   }
 
   handleChange(event) {
+    // handlechange 在每次按键时都会执行并更新 React 的 state，因此显示的值将随着用户输入而更新
     this.setState({value: event.target.value});
   }
 
@@ -439,6 +670,19 @@ class NameForm extends React.Component {
   }
 }
 ```
+
+对于受控组件来说，输入的值始终由 React 的 state 驱动。_（最后成功输入的值并不是键盘敲入的值，而是 `setState()` 方法设置的 `value` 的值。）_
+
+> 例外：
+在 HTML 中，`<input type="file">` 允许用户从存储设备中选择一个或多个文件，将其上传到服务器，或通过使用 JavaScript 的 File API 进行控制。
+因为它的 `value` 只读，所以它是 React 中的一个**非受控**组件。
+
+- 在受控组件上指定 `value` 的值为常值，则会阻止用户更改输入。
+  如：`<input value="hi" />`。
+- 如果你指定了 `value`，但输入仍可编辑，则可能是你意外地将 `value` 设置为 `undefined` 或 `null`。
+  如：`<input value={null} />`。
+
+<span id='处理多个输入'>
 
 ### 处理多个输入
 
@@ -492,13 +736,17 @@ class Reservation extends React.Component {
 }
 ```
 
+<span id='Lifting_State_Up'>
+
 ## 状态提升
+
+通常，多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去。
 
 在 React 中，将多个组件中需要共享的 state 向上移动到它们的最近共同父组件中，便可实现共享 state。这就是所谓的“状态提升”。
 
 实现方法是：
 
-- 使用 `this.props.value` 替代 `this.state.value` 来读取温度数据
+- 使用 `this.props.value` 替代 `this.state.value` 来读取数据
 - 使用 `this.props.onChange()` 替代 `this.setState()` 来响应数据改变
 - 在父组件中提供 `value` 和 `onChange()` 并传递给子组件，如下：
 
@@ -507,6 +755,8 @@ class Reservation extends React.Component {
   ```
   
 应当依靠**自上而下的数据流**，而不是尝试在不同组件间同步 state。
+
+<span id='Composition_vs_Inheritance'>
 
 ## 组合 vs 继承
 
@@ -567,7 +817,7 @@ function App() {
 }
 ```
 
-在 React 中没有“槽”这一概念的限制，你可以将任何东西作为 props 进行传递。
+在 React 中没有“槽”（slot）这一概念的限制，你可以将任何东西作为 props 进行传递。
 
 
  
