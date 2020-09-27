@@ -110,102 +110,175 @@ Another way that apps consume too many threads is by creating too many private c
 	
 ### Configuring Queue Execution Parameters 配置队列执行参数
 
-- [dispatch\_queue\_attr\_t]
+- [dispatch\_queue\_attr\_t](https://developer.apple.com/documentation/dispatch/dispatch_queue_attr_t?language=objc)
 
 	Attributes describing the behaviors of a dispatch queue.
-- [dispatch\_queue\_attr\_make\_with\_qos\_class]
+	
+	描述调度队列的行为的属性。
+	
+- [dispatch\_queue\_attr\_make\_with\_qos\_class](https://developer.apple.com/documentation/dispatch/1453028-dispatch_queue_attr_make_with_qo?language=objc)
 
 	Returns attributes suitable for creating a dispatch queue with the desired quality-of-service information.
-- [dispatch\_queue\_get\_qos\_class]
+	
+	返回适合于创建具有所需服务质量信息的调度队列的属性。
+	
+- [dispatch\_queue\_get\_qos\_class](https://developer.apple.com/documentation/dispatch/1452829-dispatch_queue_get_qos_class?language=objc)
 
 	Returns the quality-of-service class for the specified queue.
-- [dispatch\_qos\_class\_t]
+	
+	返回指定队列的服务质量类。
+	
+- [dispatch\_qos\_class\_t](https://developer.apple.com/documentation/dispatch/dispatch_qos_class_t?language=objc)
 
 	Quality-of-service classes that specify the priorities for executing tasks.
-- [dispatch\_queue\_attr\_make\_initially\_inactive]
+	
+	指定执行任务的优先级的服务质量类。
+	
+- [dispatch\_queue\_attr\_make\_initially\_inactive](https://developer.apple.com/documentation/dispatch/1642194-dispatch_queue_attr_make_initial?language=objc)
 
 	Returns an attribute that configures a dispatch queue as initially inactive.
-- [dispatch\_queue\_attr\_make\_with\_autorelease\_frequency]
+	
+	返回一个属性，该属性用于配置一个调度队列作为初始非活动状态。
+	
+- [dispatch\_queue\_attr\_make\_with\_autorelease\_frequency](https://developer.apple.com/documentation/dispatch/1642197-dispatch_queue_attr_make_with_au?language=objc)
 
 	Returns an attribute that specifies how the dispatch queue manages autorelease pools for the blocks it executes.
-- [dispatch\_autorelease\_frequency\_t]
+	
+	返回一个属性，该属性指明调度队列如何为 block 的执行管理自动释放池。
+	
+- [dispatch\_autorelease\_frequency\_t](https://developer.apple.com/documentation/dispatch/dispatch_autorelease_frequency_t?language=objc)
 
 	Constants indicating the frequency with which a dispatch queue creates autorelease pools for its tasks.
+	
+	指示一个调度队列为它的任务创建自动释放池的频率的常量。
 
 ### Executing Tasks Asynchronously 异步执行任务
 
-- [dispatch\_async]
+- [dispatch\_async](https://developer.apple.com/documentation/dispatch/1453057-dispatch_async?language=objc)
 
 	Submits a block for asynchronous execution on a dispatch queue and returns immediately.
-- [dispatch\_async\_f]
+	
+	提交一个 block 到一个调度队列上异步执行，并立即返回。
+	
+- [dispatch\_async\_f](https://developer.apple.com/documentation/dispatch/1452834-dispatch_async_f?language=objc)
 
 	Submits an application-defined function for asynchronous execution on a dispatch queue and returns immediately.
-- [dispatch\_after]
+	
+	提交一个应用程序定义的方法到调度队列上异步执行，并立即返回。
+	
+- [dispatch\_after](https://developer.apple.com/documentation/dispatch/1452876-dispatch_after?language=objc)
 
 	Enqueues a block for execution at the specified time.
-- [dispatch\_after\_f]
+	
+	在指定的时间排队执行一个 block。
+	
+- [dispatch\_after\_f](https://developer.apple.com/documentation/dispatch/1452878-dispatch_after_f?language=objc)
 
 	Enqueues an application-defined function for execution at the specified time.
-- [dispatch\_function\_t]
+	
+	在指定的时间排队执行一个程序定义的方法。
+	
+- [dispatch\_function\_t](https://developer.apple.com/documentation/dispatch/dispatch_function_t?language=objc)
 
 	The prototype of functions submitted to dispatch queues.
-- [dispatch\_block\_t]
+	
+	提交到调度队列的函数原型。
+	
+- [dispatch\_block\_t](https://developer.apple.com/documentation/dispatch/dispatch_block_t?language=objc)
 
 	The prototype of blocks submitted to dispatch queues, which take no arguments and have no return value.
+	
+	提交到调度队列的 block 原型，它没有参数也没有返回值。
 
 ### Executing Tasks Synchronously 同步执行任务
 
-- [dispatch\_sync]
+- [dispatch\_sync](https://developer.apple.com/documentation/dispatch/1452870-dispatch_sync?language=objc)
 
 	Submits a block object for execution and returns after that block finishes executing.
-- [dispatch\_sync\_f]
+	
+	提交一个 block 对象以执行，并且在 block 执行完成后返回。
+	
+- [dispatch\_sync\_f](https://developer.apple.com/documentation/dispatch/1453123-dispatch_sync_f?language=objc)
 
 	Submits an application-defined function for synchronous execution on a dispatch queue.
+	
+	提交一个程序定义的方法到一个调度队列上同步执行。
 
 ### Executing a Task Only Once 只执行一次任务
 
-- [dispatch\_once]
+- [dispatch\_once](https://developer.apple.com/documentation/dispatch/1447169-dispatch_once?language=objc)
 
 	Executes a block object only once for the lifetime of an application.
-- [dispatch\_once\_f]
+	
+	执行一个 block 对象，在整个应用生命周期中只执行一次。
+	
+- [dispatch\_once\_f](https://developer.apple.com/documentation/dispatch/1447167-dispatch_once_f?language=objc)
 
 	Executes an application-defined function only once for the lifetime of an application.
-- [dispatch\_once\_t]
+	
+	执行一个程序定义的方法，在整个应用生命周期中只执行一次。
+	
+- [dispatch\_once\_t](https://developer.apple.com/documentation/dispatch/dispatch_once_t?language=objc)
 
-	A predicate for use with the dispatch\_once function.
+	A predicate for use with the `dispatch_once` function.
+	
+	用于 `dispatch_once` 方法的谓词。
 
 ### Executing a Task in Parallel 并行执行任务
 
-- [dispatch\_apply]
+- [dispatch\_apply](https://developer.apple.com/documentation/dispatch/1453050-dispatch_apply?language=objc)
 
 	Submits a single block to the dispatch queue and causes the block to be executed the specified number of times.
-- [dispatch\_apply\_f]
+	
+	提交一个单独的 block 到调度队列，并让这个 block 执行指定的次数。
+	
+- [dispatch\_apply\_f](https://developer.apple.com/documentation/dispatch/1452846-dispatch_apply_f?language=objc)
 
 	Submits a single function to the dispatch queue and causes the function to be executed the specified number of times.
-- [DISPATCH\_APPLY\_AUTO]
+	
+	提交一个单独的函数到调度队列，并让这个函数执行指定的次数。
+	
+- [DISPATCH\_APPLY\_AUTO](https://developer.apple.com/documentation/dispatch/dispatch_apply_auto?language=objc)
 
 ### Managing Queue Attributes 管理队列属性
 
-- [dispatch\_queue\_get\_label]
+- [dispatch\_queue\_get\_label](https://developer.apple.com/documentation/dispatch/1452939-dispatch_queue_get_label?language=objc)
 
 	Returns the label you assigned to the dispatch queue at creation time.
-- [DISPATCH\_CURRENT\_QUEUE\_LABEL]
+	
+	返回你在创建时分配给调度队列的标签。
+	
+- [DISPATCH\_CURRENT\_QUEUE\_LABEL](https://developer.apple.com/documentation/dispatch/dispatch_current_queue_label?language=objc)
 
-	Pass this constant to the dispatch\_queue\_get\_label function to retrieve the label of the current queue.
-- [dispatch\_set\_target\_queue]
+	Pass this constant to the `dispatch_queue_get_label` function to retrieve the label of the current queue.
+	
+	把这个常数传给 `dispatch_queue_get_label` 方法可以取回当前队列的标签。
+	
+- [dispatch\_set\_target\_queue](https://developer.apple.com/documentation/dispatch/1452989-dispatch_set_target_queue?language=objc)
 
 	Specifies the dispatch queue on which to perform work associated with the current object.
+	
+	指定一个在其上执行与当前对象相关联的工作的调度队列。
 
 ### Getting and Setting Contextual Data 获取和设置上下文数据
-- [dispatch\_get\_specific]
+
+- [dispatch\_get\_specific](https://developer.apple.com/documentation/dispatch/1453125-dispatch_get_specific?language=objc)
 
 	Returns the value for the key associated with the current dispatch queue.
-- [dispatch\_queue\_set\_specific]
+	
+	返回与当前调度队列想关联的 key 的值。
+	
+- [dispatch\_queue\_set\_specific](https://developer.apple.com/documentation/dispatch/1452967-dispatch_queue_set_specific?language=objc)
 
 	Sets the key/value data for the specified dispatch queue.
-- [dispatch\_queue\_get\_specific]
+	
+	对指定的调度队列设置 key/value 数据。
+	
+- [dispatch\_queue\_get\_specific](https://developer.apple.com/documentation/dispatch/1453067-dispatch_queue_get_specific?language=objc)
 
 	Gets the value for the key associated with the specified dispatch queue.
+	
+	获取与指定调度队列相关联的 key 的值。
 
 ### Managing the Main Dispatch Queue 管理主调度队列
 - [dispatch\_main](https://developer.apple.com/documentation/dispatch/1452860-dispatch_main?language=objc)

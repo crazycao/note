@@ -30,31 +30,31 @@ If you need to use retain and release semantics in an ARC-enabled app with a lat
 
 ### Queues and Tasks 队列和任务
 
-- [dispatch\_get\_main\_queue](https://developer.apple.com/documentation/dispatch/1452921-dispatch_get_main_queue?language=objc)
+- [dispatch\_get\_main\_queue](./API/dispatch_get_main_queue.md)
 
 	Returns the serial dispatch queue associated with the application’s main thread.
 	
 	返回与 app 的主线程相关联的串行调度队列。
 	
-- [dispatch\_get\_global\_queue](https://developer.apple.com/documentation/dispatch/1452927-dispatch_get_global_queue?language=objc)
+- [dispatch\_get\_global\_queue](./API/dispatch_get_global_queue.md)
 
 	Returns a system-defined global concurrent queue with the specified quality-of-service class.
 	
 	返回一个系统定义的具有指定服务质量类的全局并发队列。
 
-- [Dispatch Queue 调度队列](https://developer.apple.com/documentation/dispatch/dispatch_queue?language=objc)
+- [Dispatch Queue 调度队列](./Dispatch Queue.md)
 
 	An object that manages the execution of tasks serially or concurrently on your app's main thread or on a background thread.
 	
 	一个管理任务执行的对象，它可以控制任务在你的 APP 的主线程或后台线程上串行或并行的执行。
 	
-- [Dispatch Work Item 调度工作项目](https://developer.apple.com/documentation/dispatch/dispatch_work_item?language=objc)
+- [Dispatch Work Item 调度工作项目](./Dispatch Work Item.md)
 
 	The work you want to perform, encapsulated in a way that lets you attach a completion handle or execution dependencies.
 	
 	你想要执行的工作，以允许附加完成句柄或执行依赖项的方式封装。
 	
-- [Dispatch Group 调度组](https://developer.apple.com/documentation/dispatch/dispatch_group?language=objc)
+- [Dispatch Group 调度组](./Dispatch Group.md)
 
 	A group of tasks that you monitor as a single unit.
 	
@@ -62,13 +62,13 @@ If you need to use retain and release semantics in an ARC-enabled app with a lat
 
 ### Quality of Service 服务质量
 
-- [dispatch_qos_class_t](https://developer.apple.com/documentation/dispatch/dispatch_qos_class_t?language=objc)
+- [dispatch\_qos\_class\_t](https://developer.apple.com/documentation/dispatch/dispatch_qos_class_t?language=objc)
 
 	Quality-of-service classes that specify the priorities for executing tasks.
 	
 	指定执行任务的优先级的服务质量类。
 	
-- [dispatch_queue_priority_t](https://developer.apple.com/documentation/dispatch/dispatch_queue_priority_t?language=objc)
+- [dispatch\_queue\_priority\_t](https://developer.apple.com/documentation/dispatch/dispatch_queue_priority_t?language=objc)
 
 	The execution priority for tasks in a global concurrent queue.
 	
@@ -76,7 +76,7 @@ If you need to use retain and release semantics in an ARC-enabled app with a lat
 	
 ### System Event Monitoring 系统事件监视器
 
-- [Dispatch Source 调度源](https://developer.apple.com/documentation/dispatch/dispatch_source?language=objc)
+- [Dispatch Source 调度源](./Dispatch Source.md)
 
 	An object that coordinates the processing of specific low-level system events, such as file-system events, timers, and UNIX signals.
 	
@@ -122,13 +122,13 @@ If you need to use retain and release semantics in an ARC-enabled app with a lat
 	
 	使用来自挂钟的绝对时间创建一个 `dispatch_time_t`。
 	
-- [dispatch_time_t](https://developer.apple.com/documentation/dispatch/dispatch_time_t?language=objc)
+- [dispatch\_time\_t](https://developer.apple.com/documentation/dispatch/dispatch_time_t?language=objc)
 
 	An abstract representation of time.
 	
 	时间的抽象表达。
 	
-- [DISPATCH_WALLTIME_NOW](https://developer.apple.com/documentation/dispatch/2963138-anonymous/dispatch_walltime_now?language=objc)
+- [DISPATCH\_WALLTIME\_NOW](https://developer.apple.com/documentation/dispatch/2963138-anonymous/dispatch_walltime_now?language=objc)
 
 	The current time.
 	
@@ -136,7 +136,7 @@ If you need to use retain and release semantics in an ARC-enabled app with a lat
 	
 ### Dispatch Objects 调度对象
 
-- [Dispatch Objects 调度对象](https://developer.apple.com/documentation/dispatch/dispatch_objects?language=objc)
+- [Dispatch Objects 调度对象](./Dispatch Objects.md)
 
 	The basic behaviors supported by all dispatch types.
 	
