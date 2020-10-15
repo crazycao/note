@@ -46,7 +46,7 @@ By default, dispatch objects are declared as Objective-C types when you build th
 
 ### Changing the Assigned Target Queue 更改分配的目标队列
 
-- [dispatch\_set\_target\_queue]()
+- [dispatch\_set\_target\_queue](./API/dispatch_set_target_queue.md)
 
 	Specifies the dispatch queue on which to perform work associated with the current object.
 	
