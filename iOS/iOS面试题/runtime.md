@@ -28,23 +28,22 @@
 - 利用关联对象（AssociatedObject）给分类添加属性
 
 	```
-	// 保存name
-    // 动态添加属性 = 本质:让对象的某个属性与值产生关联
-    /*
-        object:保存到哪个对象中 
-        key:用什么属性保存 属性名
-        value:保存值
-        policy:策略,strong,weak
-     objc_setAssociatedObject(<#id object#>, <#const void *key#>, <#id value#>, <#objc_AssociationPolicy policy#>)
-     */
+	// 动态添加属性的本质是：让对象的某个属性与值产生关联
+    // 保存name
     objc_setAssociatedObject(self, "name", name, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     //读取name
     objc_getAssociatedObject(self, "name");
     ```
-- 遍历类的所有成员变量（修改textfield的占位文字颜色、字典转模型、自动归档解档）
+- 遍历类的所有成员变量
+	- 字典转模型
+	- 修改textfield的占位文字颜色
+	- 自动归档解档
 - 交换方法实现（交换系统的方法）
-- 利用消息转发机制解决方法找不到的异常问题
+- 利用消息转发机制解决方法找不到的异常问题，异常捕获，避免Crash
+- 实现多重继承（OC本身是不支持多重继承的）
+	- 让子类同时继承A类和B类的协议
+	- 在调用方法时，将消息转发到A类和B类里
 
 ## runtime 如何通过 selector 找到对应的 IMP 地址？
 > IMP：函数指针，指向 objetive-C 方法(method)实现代码块的地址。
@@ -85,18 +84,51 @@
 	- 利用 class_replaceMethod 替换方法的实现 IMP
 	- 利用 method_setImplementation 来直接设置某个方法的实现 IMP
 
-## 类的结构
+## 类的结构、实例对象的结构
+
+```
+typedef struct objc_class *Class; // Class本身其实也是一个对象，称为“类对象”
+typedef struct objc_object *id;   // NSObject 真正到底层的 是一个 objc_object（C/C++）的结构体类型
+```
+```
+struct objc_class : objc_object { // objc_class 继承自 objc_object
+    // Class ISA;				  // 该变量来自于父类，所以这里注释掉
+    Class superclass;			  // 父类的指针
+    const char *name ; 			  // 类名
+ 	long version ; 				  // 类的版本信息，初始化默认为0，可以通过runtime函数class_setVersion和class_getVersion进行修改、读取
+    long info; 					  // 一些标识信息，如CLS_CLASS (0x1L) 表示该类为普通 class，其中包含对象方法和成员变量;CLS_META (0x2L) 表示该类为 metaclass，其中包含类方法;
+	long instance_size ; 		  // 该类的实例变量大小(包括从父类继承下来的实例变量);
+    struct objc_ivar_list *ivars; // 实例变量列表。用于存储每个成员变量的地址
+    struct objc_method_list **methodLists ; // 方法列表。与 info 的一些标志位有关,如CLS_CLASS (0x1L),则存储对象方法，如CLS_META (0x2L)，则存储类方法;
+ 
+    struct objc_cache *cache; 	  // 指向最近使用的方法的指针，用于提升效率
+    struct objc_protocol_list *protocols; // 存储该类遵守的协议
+}
+```
+```
+struct objc_object {
+private:
+    isa_t isa; // 实例对象的 isa 指向其类对象，类对象的 isa 指向其元类，元类的 isa 指向 NSObject
+public:
+    // ISA() assumes this is NOT a tagged pointer object
+    Class ISA();
+    ...
+}
+```
+
 
 - Class本身其实也是一个对象，我们称之为类对象，类对象在编译期产生用于创建实例对象，是单例
-- struct objc_classs结构体里存放的数据称为元数据(metadata)，通过成员变量的名称我们可以猜测里面存放有：
-	- 指向父类的指针（isa指针）、
-	- 类的名字、
-	- 版本、
-	- 实例大小、
-	- 实例变量列表、
-	- 方法列表、
-	- 缓存、
-	- 遵守的协议列表等
+- struct objc_classs结构体里存放的数据称为元数据(metadata)，包括以下：
+	- isa 指针
+	- 指向父类的指针（supper_class）
+	- 类的名字（name）
+	- 版本（version）
+	- 标识信息，class 或 metaclass（info）
+	- 实例变量大小（instanse_size）
+	- 实例变量列表（ivars）
+	- 方法列表（methodLists）
+	- 缓存，指向最近使用的方法（cache）
+	- 遵守的协议列表（protocols）
 - 类对象中的元数据存储的都是如何创建一个实例的相关信息
 - 类对象的 isa 指针指向的我们称之为元类(metaclass)。元类 是系统给的，其定义和创建都是由编译器完成。元类 中保存了创建 类对象 以及 类方法 所需的所有信息。
 
