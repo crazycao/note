@@ -34,7 +34,7 @@
     
     //读取name
     objc_getAssociatedObject(self, "name");
-    ```
+  ```
 - 遍历类的所有成员变量
 	- 字典转模型
 	- 修改textfield的占位文字颜色
@@ -166,4 +166,7 @@ public:
 	- didChangeValueForKey
 		- 在 didChangeValueForKey 的内部实现中会调用观察者的回调方法，返回被观察对象的相关参数  
 - 将class方法重写，返回原类的Class
+	
 	- 苹果不想暴露kvo的内部实现
+	
+	- > KVC是Key Value Coding的简称。它是一种可以通过字符串的名字（key）来访问类属性的机制。而不是通过调用Setter、Getter方法访问。注意区分
