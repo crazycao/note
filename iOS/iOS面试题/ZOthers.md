@@ -57,3 +57,8 @@ NSLog(@"%d", class==NSString.class);
 	- 即把内容也给拷贝了一份,两者指向不同的位置,
 	- 即使改变了NSMutableString的值,NSString的值也不会改变
 - 以上规则不止适用于NSString，NSArray，NSDictionary等同理
+
+
+## git rebase 与 git merge 有什么区别
+
+- `git merge`：
