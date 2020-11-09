@@ -60,5 +60,9 @@ NSLog(@"%d", class==NSString.class);
 
 
 ## git rebase 与 git merge 有什么区别
+- git merge 和 git rebase 都是用来合并两个分支的。
+- git merge [branch]：将指定分支合并到当前分支中，如果没有冲突则自动进行新的提交。
+- git rebase [branch]：在另一个分支基础之上重新应用修改，把另一个分支上的 commit 都放到当前分支的 commit 之后，就好像当前分支是从另一个分支的最新 commit 上拉出来的一样。（所以称为“变基”）
+	- 冲突处理：手动处理完冲突以后，用 `git add` 命令去更新这些内容的索引，然后执行 `git rebase --continue` 继续应用(apply)余下的补丁。
+	- 在任何时候，可以用 `git rebase --abort` 参数来终止rebase的操作，并且当前分支会回到rebase开始前的状态。
 
-- `git merge`：
