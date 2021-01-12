@@ -78,8 +78,8 @@ Which style guide do you want to follow? (Use arrow keys)
         }
     },
     "parser": "esprima", /* 指定解析器 */
-    "plugins": [
-        "eslint-plugin-plugin1", /* 使用插件 */
+    "plugins": [ /* 使用插件 */
+        "eslint-plugin-plugin1", 
         "plugin2" /* 插件名称可以省略 eslint-plugin- 前缀 */
     ], 
     "processor": "a-plugin/a-processor", /* 启用插件 a-plugin 提供的处理器 a-processor。 */
@@ -93,7 +93,7 @@ Which style guide do you want to follow? (Use arrow keys)
         "curly": "warn", /* "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出) */
         "quotes": "error" /* 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出) */
     },
-    "overrides": [
+    "overrides": [ /* 对指定文件的处理 */
         {
             "files": ["*.md"],
             "processor": "a-plugin/markdown" /* 对指定类型的文件使用处理器 */
