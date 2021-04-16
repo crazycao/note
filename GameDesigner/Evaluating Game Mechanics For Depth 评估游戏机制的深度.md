@@ -24,7 +24,7 @@ If the players felt the game overall didn't have enough variety you can add more
 
 - Buzzwords to watch for: The game is "a one-trick pony," "repetitive," "or needs more variety."
 
-- 关注这些关键词：这款游戏是“只有这一点”、“重复的”或者“需要更多的变化”。
+- 关注这些关键词：这款游戏是“只会这一招的”、“重复的”或者“需要更多的变化”。
 
 - Feedback that can be fixed with these kind of content expansions tends to describe the game as a whole. Players feel they don't have enough different things to do on a global level.
 
@@ -52,7 +52,7 @@ If players feel that an individual game mechanic "isn't giving them a good enoug
 
 - It's a good idea to pump up the theatrics when you get feedback like this, but while it might help players tolerate a mechanic for longer, it will only go so far. When theatrics fail, it's time to knuckle down, roll up your sleeves, and get to work on making your game mechanic deeper.
 
-- 当你收到像这样的反馈时，提升舞台效果也是一个好主意，但是它可能只是让玩家忍受这个机制更长的时间，它也就只能走这么远了。当舞台效果失败了，是时候该弯下腰，卷起袖子，开始让你的游戏机制更有深度了。
+- 当你收到像这样的反馈时，提升舞台效果也是一个好主意，但是它可能只是让玩家忍受这个机制更长的时间，它也就只能这样了。当舞台效果失败了，是时候该弯下腰，卷起袖子，开始让你的游戏机制更有深度了。
 
 While each of these could be the focus of its own article, this article will focus on perhaps the trickiest of the three: depth. By the time you're done reading this article, I hope to describe for you the tools I use to find out why a game mechanic doesn't feel deep enough. Even better, I hope to impart a few techniques that I've found help a lot when it comes time to fix a shallow game mechanic.
 
@@ -134,7 +134,7 @@ This sounds like a small distinction, but is in fact **very** important. Making 
 
 这听起来是一个很小的区别，但实际上**非常的**重要。在设计游戏机制的思维方式上进行这种转变，可以让你看到与深度相关的问题，否则你不会看到。
 
-## Meaningful Skills: A Morality Tale 有意义的技能：良心的故事
+## Meaningful Skills: A Morality Tale 有意义的技能：一个真实的故事
 
 When I was a junior designer on _Ratchet & Clank 2_, I was given the task of coming up with all the "Tractor Beam" puzzles for the two levels of the game that used them. The tractor beam was a game mechanic that allowed Ratchet to freely move large objects marked with a special tractor beam symbol. Essentially this is a theatrical "paint-over" of classic block-pushing challenges from games like _The Legend of Zelda_.
 
@@ -150,7 +150,7 @@ At this time in my career, I didn't yet understand the important distinction bet
 
 Besides moving blocks around, I decided it would be great if the player could grab and drag around a wacky robot (if you're reading this and thinking "oh, you improved the theatrics," you get a cookie). The player could then drop the robot on buttons to open doors. This didn't help as much as I wanted it to -- it just still seemed way to shallow.
 
-除了移动木块，我决定如果玩家能够抓住和拖着一个古怪的机器人那就会非常好（如果你读到这里，就想到“啊哦，你改进了舞台效果”， 那你可以得到一个奖励）。然后玩家可以把机器人放到按钮上就能打开门。这并没有像我所希望的那样有多大的帮助——它看起来还是太肤浅了。
+除了移动木块，我决定如果玩家能够抓住和拖着一个古怪的机器人那就会非常好（如果你读到这里，就想到“啊哦，你改进了舞台效果”， 那可以奖励你一块小饼干）。然后玩家可以把机器人放到按钮上就能打开门。这并没有像我所希望的那样有多大的帮助——它看起来还是太肤浅了。
 
 So I forged ahead and kept adding features (groan).
 
@@ -166,7 +166,7 @@ I decided blocks would be able to get in the way of laser beams so you could get
 
 I added special blocks with explosive rockets inside that would blow up certain doors.
 
-我加了一个里面装有爆炸性火箭的特殊木块，可以炸开某些门。
+我加了一个里面装有爆炸火箭的特殊木块，可以炸开某些门。
 
 Finally, I made it so that some of the blocks slid around inside a groove on the floor. The player had to figure out how to arrange the blocks into a specific order, but the blocks all got into each others way, since they shared a groove.
 
@@ -174,7 +174,7 @@ Finally, I made it so that some of the blocks slid around inside a groove on the
 
 By the end of all that adding, not only was I permanently on several programmers' hate lists, but the tractor beam game mechanic was quickly getting too bloated. It was way too complicated for players to handle. Playtests were generating feedback that players were routinely confused. We had to devote about half the time spent with the tractor beam purely to training, so that our players could understand the basic gist of what they needed to do.
 
-在添加了所有这些以后，我不仅永远的存在于了几个程序员的仇恨名单上，牵引光束游戏机制也很快变得臃肿。这对于玩家来说太复杂了。游戏测试员反馈说，玩家经常感到困惑。我们必须把几乎一半是时间单纯的花费在牵引光束的训练上，这样玩家才能够理解他们要做的基本要点。
+在添加了所有这些以后，我不仅永远的存在于了几个程序员的仇恨名单上，牵引光束游戏机制也很快变得臃肿。这对于玩家来说太复杂了。游戏测试员产生了一些反馈，玩家经常感到困惑。我们必须把几乎一半是时间单纯的花费在牵引光束的训练上，这样玩家才能够理解他们要做的基本要点。
 
 Looking back, it's clear to me why the mechanic never felt deep enough: I kept adding new objectives, but failed to add many meaningful skills.
 
@@ -192,37 +192,67 @@ While players found the Inspector Bot wacky and funny, adding him did not succee
 
 虽然玩家觉得巡逻机器人古怪有趣，但是添加它并没有达成让牵引光束游戏机制更有深度的目标。
 
-## Making a Statement 发表声明
+## Making a Statement 写一个声明
 
 So if I could go back in time, how would I help myself make the tractor beam challenge deeper? Well the first thing I'd suggest is that my past-self come up with an "Activity Statement" for each challenge in the segment.
 
+那么如果我可以回到那个时候，我要如何帮助自己让牵引光束的挑战更加有深度呢？我建议的第一件事是，让过去的自己为每一个部分的挑战提出一个“活动声明”。
+
 An Activity Statement is a simple sentence that describes a challenge by stating both the objective of a challenge and the meaningful skills that the player must use to obtain his objective.
+
+活动声明是描述一个挑战的简单语句，陈述挑战的目标和玩家获得这个目标必须使用到的有意义的技能。
 
 For example, a simple platforming challenge could be described in an Activity Statement as: "I want the player to jump up to that platform." In this case "jump up" is the meaningful skill and "that platform" is the objective.
 
+例如，一个简单的平台挑战可以用活动声明描述为：“我希望玩家跳到那个平台上。”在这个例子中，“跳”是有意义的技能，而“那个平台”是目标。
+
 A more complex platforming Activity Statement might be "I want the player to double jump straight up and then glide down to that platform" or "I want the player to time his jump to avoid the fire spouts and land on that platform."
+
+一个更加复杂的平台活动声明可能是“我希望玩家向上连跳然后滑到平台上”或者“我希望玩家算好起跳的时间避开火焰喷射并落在平台上”。
 
 The Activity Statements listed above all contain a mixture of objectives and meaningful skills. But what happens if you exclude one of those ingredients? We've established that challenges without a clear objective are not deep, but it's also true that game mechanics that feel shallow tend to include many objectives, but few meaningful skills.
 
+上面列出的所有活动声明都包含了目标和有意义的技能的结合。但是，如果你去掉其中一种成分会怎么样呢？我们已经确定的是，没有清晰目标的挑战是没有深度的，而拥有许多目标却缺少有意义的技能的游戏机制也会让人觉得太浅。
+
 Here is what Activity Statements would have looked like for some of the tractor beam challenges past-me designed:
+
+以下是过去的我设计的一些牵引光束挑战的活动声明：
 
 - "I want the player to move a wacky robot from his starting spot to a button on the floor."
 - "I want the player to move a bomb from its starting spot to a spot in front of that door."
 - "I want the player to move a block from its starting space so that it blocks that laser beam."
 - "I want the player to move an explosive rocket block to that button on the floor."
 
+- “我想要玩家把奇怪的机器人从它的起始点移动到地面上的按钮的位置。”
+- “我想要玩家把炸弹从它的起始点移动到门前面的一个点。”
+- “我想要玩家把木块从它的起始位置移动到可以阻挡激光的地方。”
+- “我想要玩家把爆炸火箭块移动到地面上的按钮位置。”
+
 You'll notice that the above statements all clearly outline objectives, but no meaningful skills. In fact, when you examine them closely, all of them outline the same objective, and it's not even a particularly interesting objective!
+
+你应该注意到上面的声明都清楚的概述了目标，而不是有意的技能。事实上，当你仔细考察它们时，你会发现所有的概述都是同一个目标，甚至不是一个特别有趣的目标。
 
 Each statement is basically saying "Move from point A to point B," which we already know describes a skill so basic that it doesn't make our game mechanic any deeper.
 
+每一句声明基本上都是在说“从A点移动到B点”，我们都已经知道描述一个如此基础的技能不会给我们的游戏机制带来任何深度。
+
 With the other two challenges past-me designed, it looks like I was onto something a little deeper:
+
+过去的我设计的另外两个挑战看起来更有一点深度：
 
 - "I want the player to move a bomb its starting spot into that energy slingshot and use it to blow up a target."
 - "I want the player to slide these blocks around inside a groove and arrange them in a specific order."
 
+- “我想要玩家把炸弹从它的起始点移入能量弹射器，并用它来炸毁目标。”
+- “我想要玩家在凹槽内滑动这些木块，并把它们排列成特定的顺序。”
+
 Both of these Activity Statements, "use the energy slingshot to blow up a target" and "arrange the blocks in a specific order" describe skills that are much more meaningful than the others.
 
+这两个活动声明——“使用能量弹射器炸毁目标”和“把木块排列成特定的顺序”就描述的技能就比其他更有意义得多。
+
 Knowing this, I would advise my past-self to:
+
+了解这个以后，我向过去的我给出如下建议：
 
 1. Cut most of the too-basic skills / objectives described above. They all boil down to "take an object near a door to open the door" and could be accomplished with either the bomb or the rocket-block. Nuke redundancy and simplify things for your players, past-me! Do it now!
 1. Examine the two deeper mechanics and try to create more challenges for each of them. Past-me would begin designing these new challenges by writing an Activity Statement for each one.
@@ -230,15 +260,31 @@ Knowing this, I would advise my past-self to:
 1. Play-test the new challenges.
 1. If the whole thing is still too shallow, add another Meaningful Skill to the list (make sure it's not an objective!) and repeat from step 1.
 
+>
+
+1. 去掉上面提到的大部分太基础的技能/目标。它们都可以归结为“在门附近拿一个物体来开门”，并且可以用炸弹或火箭块来完成。过去的我，快为玩家消除冗余和简化操作吧！马上去做！
+2. 研究那两个更深的机制，并尝试为每一个机制的创造更多的挑战。过去的我应该开始通过给它们写活动声明来设计新的挑战。
+3. 游戏中的新挑战原型。
+4. 试玩新的挑战。
+5. 如果整个下来仍然太浅，就再添加其他有意义的技能进来（必须确保是技能而不是目标）并重复步骤1。
+
 The objective of this tractor beam challenge is very clear; get the three blocks into the alcoves that best fit them. Further, the Meaningful Skill (organize the blocks despite them getting in each others' way) is much deeper than in any of the other Tractor Beam challenges.
+
+牵引光束挑战的目标是非常清晰的；把三个木块放入最适合它们的壁龛里。此外，有意义的技能（组织好木块避免它们互相妨碍）比其他的牵引光束挑战要深得多。
 
 **Note**: All of my examples thus far have been about puzzle-like gameplay, but this article isn't just about puzzles. All types game mechanics can benefit from this way of thinking.
 
+**注意**：到目前为止我的所有例子都是关于类似解谜游戏的，但是这篇文章并不只是关于解谜。所有种类的游戏机制都可以从这种思考方式中获益。
+
 For example, lets say you have a gun combat mechanic that is feeling shallow. Perhaps this is because "use your gun to kill an enemy" doesn't say anything about the meaningful skill. It is purely a statement of objective. In Ratchet & Clank, our gun combat's Activity Statement was more like "Choose the correct weapon or combination of weapons to kill a group of enemies as efficiently as possible."
+
+举个例子，比方说你有一个觉得太浅的枪战机制。可能是因为“用你的枪杀死敌人”并没有说明什么有意义的技能。这是一个纯粹的目标陈述。在《Ratchet & Clank》中，我们的枪战活动声明更像是“选择正确的武器或武器组合以尽可能高效的杀死一组敌人。”
 
 By altering the Activity Statement during the design phase to more explicitly encompass the meaningful skill (and thereby altering the underlying mechanic), your whole design will get deeper and more satisfying.
 
-## Avoid Vague Activity Statements 避免含糊不清的活动陈述
+通过在设计阶段修改活动声明，更明确的包含有意义的技能（从而改变底层机制），你的整个设计将更有深度、更令人满意。
+
+## Avoid Vague Activity Statements 避免含糊不清的活动描述
 
 Activity Statements are an immensely useful tool, but it's possible for them to get you into trouble. The easiest way to get in this kind of trouble is to create a vague Activity Statement.
 
