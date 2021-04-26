@@ -284,37 +284,65 @@ By altering the Activity Statement during the design phase to more explicitly en
 
 通过在设计阶段修改活动声明，更明确的包含有意义的技能（从而改变底层机制），你的整个设计将更有深度、更令人满意。
 
-## Avoid Vague Activity Statements 避免含糊不清的活动描述
+## Avoid Vague Activity Statements 避免含糊不清的活动声明
 
 Activity Statements are an immensely useful tool, but it's possible for them to get you into trouble. The easiest way to get in this kind of trouble is to create a vague Activity Statement.
 
+活动声明是一个非常有用的工具，但他也有可能给你带来麻烦。最容易陷入这种麻烦的方式是创建了一个模糊的活动声明。
+
 For example, here is a simple Activity Statement that could apply to most of the challenges in Portal:
+
+例如，这是一个可以应用于 Portal 中的大多数挑战的简单活动声明：
 
 "I want the player to use the portal gun to get this block on top of that button."
 
+“我想要玩家使用传送门枪获得那个按钮顶部的块。”
+
 While the indicated skill (use the portal gun) in this simple Activity Statement happens to be a Meaningful Skill, this kind of vague statement can get you into trouble if you're not lucky.
+
+虽然在这个简单的活动声明中所指出的技能（使用传送门枪）恰好是一个有意义的技能，但是如果你运气不好，这种含糊不清的声明会给你带来麻烦。
 
 The Clank gameplay in the Ratchet & Clank games is a good example of this.
 
+《Ratchet & Clank》游戏中的《Clank》游戏就是一个很好的例子。
+
 The Clank challenges always bugged many of the designers I knew at Insomniac, myself included. When we designed them, they seemed like they should be deep activities, but they never turned out that way.
+
+据我所知，Clank 挑战常常令在 Insomniac 工作的许多设计师烦恼，也包括我自己。当我们设计它们时，它们看起来似乎是有深度的活动，但是它们从来没有变成那样。
 
 We were able to patch them up by giving them a lot of personality and by keeping them fairly simple (theatrics, baby!) but it took many sequels to add enough depth to them to satisfy us. Players seemed to like them, but we thought we could do better.
 
+我们可以给它们打许多补丁，赋予它们许多个性元素，并保持它们相当简单（舞台效果，孩子！），但需要在后续工作中给它们添加足够的深度才能使我们满意。玩家们似乎喜欢它们，但是我们想我们可以做得更好。
+
 In the first two Ratchet & Clank games, Clank needed to give commands to his Gadgebots (cute little robots that followed him around) to get past blockades. There were a few different types of blockades, but in the end they all ended up feeling the same. We patched it up with effects and cute animations, but in general they were quite shallow.
+
+在前两关《Ratchet & Clank》中，Clank 需要向他的 Gadgebots（跟着他的可爱小机器人）下达指令，让他们通过封锁。有许多不同类型的封锁，但是最终它们的感觉都一样。我们用特效和可爱的动画来修补它，但总的来说，它们相当肤浅。
 
 The Activity Statement: "I want the player to command his array of Gadgebots to get him past blockades," in the end, is too vague. It doesn't give enough information to tell whether or not the mechanic will deep enough.
 
+这个活动声明“我想要玩家命令他的 Gadgebots 让他通过封锁”最终还是太模糊了。它不能提供足够的信息来判断机制是否足够有深度。
+
 Flash forward to Ratchet & Clank Future: A Crack in Time. Clank now has the ability to record his actions at certain points in the level and then have a hologram play those actions back.
+
+快进到《Ratchet & Clank Future: A Crack in Time》。Clank 现在有能力在关卡中的某些点记录他的动作，然后让全息图回放这些动作。
 
 This gave way to challenges with very complex Activity Statements like "I want the player to record himself going to that button, which opens a door. Then I want him to play back the recording and, once the hologram hits the button and the door opens, I want him to go through the door." You'll notice clear objectives "go to the button to open the door" and "go through the door" as well as good meaningful skills "record himself" and "play back the recording."
 
+这就让这个挑战有了非常复杂的活动声明，比如“我想要玩家记录他自己按下按钮的动作，这会打开一扇门。然后我想要他回放这个记录，并且一旦全息图按下这个按钮且门打开了，我想要他穿过这扇门。”你会注意到明确的目标“按下按钮开门”和“穿过门”，以及很好的有意义的技能“记录自己”和“回放记录”。
+
 This is a much deeper mechanic, with a much less vague set of Activity Statements.
+
+这就是一个更有深度的机制，以及一个更少含糊的活动声明。
 
 ## Exercise to Improve Depth 练习提高深度
 
 So you've got your design and it had what seems like a killer Activity Statement. But now you've prototyped it (or gone even further) and somehow the mechanic still ends up feeling flat. What can you do now?
 
+那么你已经有了你的设计，并且它已经有了似乎是杀手级的活动声明。现在你已经把它原型化了（甚至走了更远），但是不知何故，机制最终还是感觉平淡。你现在还能做什么？
+
 First take stock:
+
+首先做一个全面分析：
 
 1. Identify and list your objectives.
 
@@ -325,8 +353,22 @@ First take stock:
 	a. For each ask yourself: "Is this really a meaningful skill? Not too basic? Not an objective?"
 
 	b. Ask yourself: "Is this skill functionally a duplicate of any of the other meaningful skills in my list?" If it is, cross it out. You're tricking yourself into thinking you have more skills than you actually do.
+	
+>
+
+1. 确认并列出你的目标。
+
+	a. 对于每一个目标，问问你自己：“这个目标在功能上是否与列表中的任何其他目标重复了？”如果是，问问你自己你是否真的需要它。你真的想要花时间教你的玩家如何与它交互吗？如果答案是否，划掉它。
+	
+2. 确认并列出你的有意义的技能。
+
+	a. 对于每一个技能，问问你自己：“这个真的是有意义的技能吗？不会太基础？不是一个目标？”
+
+	b. 问问你自己：“这个技能在功能上是否与列表中的任何其他有意义的技能重复了？”如果是，划掉它。因为你在欺骗自己，让自己以为自己拥有的技能比实际拥有的还多。
 
 Having taken stock, do you now find you have too many objectives? Not enough meaningful skills? At this point, I'll bet you've discovered that, yes, somehow that's happened. At this point, just do the same exercise I suggested above to help my past-self get over his tractor beam problems:
+
+盘点之后，你现在是否发现你的目标太多了？没有足够的有意义的技能？在这个时候，我打赌你已经发现这一点了，是的，不知道怎么就发生了。在这个时候，只要按照我上面说的建议的做一些练习，我帮助过去的自己解决牵引光束的问题时的建议：
 
 1. Add one or more new meaningful skills to the list.
 
@@ -339,6 +381,17 @@ Having taken stock, do you now find you have too many objectives? Not enough mea
 4. Play-test. Is your problem solved? If so, then you're done!
 
 5. If your problem isn't solved, go back to step 1 and try again.
+
+>
+
+1. 添加一个或多个新的有意义的技能到列表中。
+
+	a. 在你添加它们时，也问问自己跟上面一样的问题。“这个技能是否真的有意义？是否太基础？是否真的是一个目标？”
+	
+2. 	浏览你所有的挑战，并改进你的活动声明。
+3. 把新的内容原型化。
+4. 试玩。你的问题解决了吗？如果是，那你就完成了！
+5. 如果你的问题还没有解决，回到第一步再试一次。
 
 ## Something to Consider 需要考虑的事情
 
