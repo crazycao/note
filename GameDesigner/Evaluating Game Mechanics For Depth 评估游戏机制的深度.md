@@ -397,26 +397,50 @@ Having taken stock, do you now find you have too many objectives? Not enough mea
 
 As I mentioned at the beginning of this article, making a mechanic deeper might not always be something you want to do. Before you go ahead and do a ton of work making a mechanic deeper, ask yourself these questions.
 
+正如我在本文开头所提到的，让机制更深可能并不总是你想要做的事情。在你进行大量工作使机制更深之前，问一问你自己这些问题。
+
 - If you make this deeper, will it still be appropriate for your audience?
+- 如果你让它更深了，它是否仍然适合你的用户？
 	- Games intended for very young players tend to have a wide variety of fairly shallow game mechanics. The Lego Star Wars games have done this incredibly well.
+	- 面向非常年轻的玩家的游戏往往具有各种各样相当肤浅的游戏机制。 Lego Star Wars 游戏在这方面做得非常出色。
 	- Does your audience really want depth? Some more casual games might benefit from more activities rather than deeper ones (a fitness game, for example, or something like WarioWare).
+	- 你的用户真的需要深度吗？某些更加休闲的游戏可能从更多的活动中受益，而不是从更深的（例如，健身游戏，或者类似《WarioWare》的游戏）。
 - "Charming" game mechanics
+- “迷人的”游戏机制
 	- If the main purpose of your mechanic is to express charm or personality, depth and increased challenge might actually get in the way of your players experiencing the quirkiness of your challenge.
+	- 如果你的游戏机制的主要意图是表达魅力或个性，深度和挑战的增加实际上可能妨碍你的玩家体验到你的游戏机制的与众不同。
 	- A good example of this might be the deeper Clank gameplay I mentioned from Ratchet & Clank Future: A Crack in Time.
+	- 一个好的例子可能是更有深度的 Clank 玩法，我在《Ratchet & Clank Future: A Crack in Time》中提到过的。
 		- The action-recording gameplay received very mixed reviews.
+		- 动作录制玩法收到了非常混杂的评论。
 		- Further, it required a ton of training and many help messages to teach players how to execute the new moves. For a mechanic that was a very small part of the whole game, this may not be ideal.
+		- 此外，它需要大量的训练和许多的帮助信息教会玩家如何执行新的动作。对于一个在整个游戏中只占很小一部分的机制来说，这可能并不理想。
 		- Players might look at the Clank sections as more of an amusing diversion. Needing to learn much deeper new skills might have alienated some.
+		- 玩家可能把 Clank 部分看作更有趣的支线。需要学习更深的新技巧可能使一些人疏远。
 - Narrative game mechanics
+- 叙事型游戏机制
 	- Sometimes the purpose of a game mechanic is to make the player "feel" something, or to serve some similar narrative purpose. In this case, depth and increased difficulty might actually get in the way of the player feeling what you want him to feel.
+	- 有时，游戏机制的目的是让玩家“感觉”到某种东西，或者达到类似的叙事目的。在这种情况下，深度和难度的增加实际上可能会阻碍玩家感受到你想要他感受到的东西。
 	- Indigo Prophecy and Heavy Rain are two games that made very good use of these kinds of Narrative Mechanics overall.
+	- 《Indigo Prophecy》和《Heavy Rain》就是两款很好的全面使用了这种叙事机制的游戏。
 
 So once you've thought it through and decided that depth is what you want, you need to make sure your game mechanics each have clear objectives and a good set of meaningful skills. By using the exercises described above, and remembering the distinction between too-basic skills and meaningful skills, you'll have a better chance of evaluating, troubleshooting, and adding depth to your game mechanics.
+
+因此，一旦你仔细想过，并确认深度是你想要的，你就需要确保你的每一个游戏机制都有明确的目标和一套很好的有意义的技能。通过使用上面描述的练习，并记住基本技能和有意义技能之间的区别，您将有更好的机会评估、解决问题并增加游戏机制的深度。
 
 ## A Final Note 写在最后 
 In this article I advocate a specific way of breaking down game mechanics. I pointed out the importance of focusing on Meaningful Skills over objectives and "too-basic" skills.
 
+在这篇文章中，我提倡一种分解游戏机制的具体方法。我指出了把重点放在有意义的技能上的重要性，而不是目标和“太基础”的技能上。
+
 Though I believe this is a very useful way to break things down, I don't mean to imply that this way of breaking things down is somehow "more correct" than any other way. This is one of many very valid ways a game can be broken down.
+
+虽然我相信这是一个非常有用的方法来分解事物，但我并不意味着这种分解事物的方法在某种程度上比其他任何方法都“更正确”。这是许多可以非常有效的分解游戏的方法之一。
 
 In his book _Science and Method_ the French Mathemetician Henri Poincaré said "Geometry is not true, it is advantageous."
 
-The same is true with models for thinking about game design. None of them are true -- they are only convenient. The model I suggest above has, time and again, proven quite convenient for me to use evaluating, predicting, and troubleshooting depth in game mechanics. Use it for that purpose, and it'll be your best friend. 
+法国数学家亨利·庞卡在他的《科学与方法》一书中说“几何不是真的，它是有好处的。”
+
+The same is true with models for thinking about game design. None of them are true -- they are only convenient. The model I suggest above has, time and again, proven quite convenient for me to use evaluating, predicting, and troubleshooting depth in game mechanics. Use it for that purpose, and it'll be your best friend.
+
+思考游戏设计的模型也是如此。它们都不是真的——它们只是方便而已。我上面建议的模型，一次又一次地，向我证明了在游戏机制中用来评估、预测和解决深度问题非常方便。为了这个目的使用它，它会成为你最好的朋友。 
